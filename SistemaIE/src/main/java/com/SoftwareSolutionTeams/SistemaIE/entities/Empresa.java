@@ -1,7 +1,11 @@
 package com.SoftwareSolutionTeams.SistemaIE.entities;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
@@ -12,14 +16,23 @@ import javax.persistence.*;
 
 public class Empresa {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nombreEmpresa;
-    private String direccionEmpresa;
     private String nitEmpresa;
-    private long idEmpresa;
+    private String telefonoEmpresa;
+    private String direccionEmpresa;
+    @ManyToOne
+    private Empleado empleado;
+    @ManyToOne
+    private Movimiento movimiento;
+
+    @CreationTimestamp
+    private LocalDateTime fechaCreacion;
+    @UpdateTimestamp
+    private LocalDateTime fechaActualizacion;
+
+
 
 
     /*public Empresa(String nombreEmpresa, String direccionEmpresa, String nitEmpresa, long idEmpresa ) {

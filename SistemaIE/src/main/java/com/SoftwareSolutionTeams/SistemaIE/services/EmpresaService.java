@@ -1,7 +1,7 @@
 package com.SoftwareSolutionTeams.SistemaIE.services;
 
 import com.SoftwareSolutionTeams.SistemaIE.entities.Empresa;
-import com.SoftwareSolutionTeams.SistemaIE.repository.IEmpresaRepository;
+import com.SoftwareSolutionTeams.SistemaIE.repository.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,23 +13,25 @@ public class EmpresaService {
 
     //inyeccion de dependecias
     @Autowired
-    IEmpresaRepository iEmpresaRepository;
+    EmpresaRepository empresaRepository;
 
-    public void crearYActualizarEmpresa(Empresa empresa){
-        iEmpresaRepository.save(empresa);
-     }
+    public void crearYActualizarEmpresa(Empresa empresa) {
+        empresaRepository.save(empresa);
+    }
 
-    public List<Empresa> verEmpresa(){
+    public List<Empresa> verEmpresa() {
         List<Empresa> empresas = new ArrayList<Empresa>();
-        empresas.addAll(iEmpresaRepository.findAll());
+        empresas.addAll(empresaRepository.findAll());
         return empresas;
     }
 
-    public void eliminarEmpresa(Long id){
-        iEmpresaRepository.deleteById(id);
+    public void eliminarEmpresa(Long id) {
+        empresaRepository.deleteById(id);
     }
-    public void buscarEmpresa(Long idEmpresa){
-        iEmpresaRepository.findById(idEmpresa);
+
+    public void buscarEmpresa(Long idEmpresa) {
+        empresaRepository.findById(idEmpresa);
     }
 
 }
+
