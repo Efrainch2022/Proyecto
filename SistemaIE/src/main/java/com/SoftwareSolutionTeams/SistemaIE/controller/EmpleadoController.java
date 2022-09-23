@@ -25,13 +25,13 @@ public class EmpleadoController {
     }
 
     @DeleteMapping("/empleado{id}")
-    private void eliminarEmpleado(@PathVariable("id") long id) {
+    private void eliminarEmpleado(@PathVariable("id") Long id) {
         empleadoService.eliminarEmpleado(id);
     }
 
     @GetMapping("/empresa{idEmpleado}")
-    private void buscarEmpleado(@PathVariable("id") long id) {
-        empleadoService.buscarEmpresa(id);
+    private void buscarEmpleado(@PathVariable("id") Long id) {
+        empleadoService.buscarEmpleado(id);
     }
     @PatchMapping("/empleado")
 

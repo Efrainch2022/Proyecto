@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmpleadoService {
@@ -29,8 +30,21 @@ public class EmpleadoService {
     public void eliminarEmpleado(Long id){
         empleadoRepository.deleteById(id);
     }
-    public void buscarEmpresa(Long id){
+
+    public void buscarEmpleado(Long id){
         empleadoRepository.findById(id);
     }
+    public Empleado getEmpleado(long id) throws Exception {
+        Optional<Empleado> empleadoBd = empleadoRepository.findById(id); //opcional si encontro o no encontro
+        if(empleadoBd.isPresent()){
+            System.out.println(empleadoBd);
+            return empleadoBd.get();
+        }
+        throw new Exception("Empleado no existe");
+    }
+    public Empleado findByCorreoEmpleado(String correoEmpleado){
+        return empleadoRepository.findByCorreoEmpleado(correoEmpleado);
+    }
+
 
 }

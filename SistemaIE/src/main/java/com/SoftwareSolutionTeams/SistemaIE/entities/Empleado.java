@@ -9,6 +9,10 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+enum ROLES {
+    ADMIN,
+    USER
+}
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,11 +22,12 @@ import java.util.List;
 public class Empleado {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
     private String nombreEmpleado;
     private String correoEmpleado;
+    private String password;
 
     @OneToOne(mappedBy="empleado")
     private Profile profile;
