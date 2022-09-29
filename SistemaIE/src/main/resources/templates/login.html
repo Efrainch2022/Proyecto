@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="col-lg-6 mx-auto form-floating">
-                    <input type="email" class="form-control" th:field="*{correoEmpleado}" id="floatingInput" placeholder="name@example.com">
+                    <input type="email" class="form-control" th:field="*{correo}" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Email address</label>
                 </div>
 
@@ -35,6 +35,12 @@
                             Recuperar password
                         </label>
                     </a>
+
+                    <div class="col-lg-6 mx-auto mb-4">
+                        <a th:href="@{/oauth2/authorization/google}">
+                            Login con Google
+                        </a>
+                    </div>
                 </div>
                 <div class="col-lg-6 mx-auto mb-5 w-50 p-3">
                     <button class="btn btn-primary" type="submit">Iniciar Sesión</button>

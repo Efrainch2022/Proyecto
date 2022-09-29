@@ -14,7 +14,7 @@ public class MyUserDetail implements UserDetails {
     private List<GrantedAuthority> authorities;
 
     public MyUserDetail(Empleado empleado){
-        this.username = empleado.getCorreoEmpleado();
+        this.username=empleado.getCorreo();
         this.password = empleado.getPassword();
         List<GrantedAuthority> roles = new ArrayList<>();
         //ADMIN, EMPLEADO, APRENDIZ
@@ -24,6 +24,8 @@ public class MyUserDetail implements UserDetails {
             );
         }
         this.authorities =roles;
+
+
     }
 
 

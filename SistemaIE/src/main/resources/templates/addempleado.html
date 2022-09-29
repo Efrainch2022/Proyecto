@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:object="${user}" method="post" th:action="@{/empleado/front}">
+
+        <div>
+            <label for="input_id">ID EMPLEADO</label>
+            <input th:field ="*{id}" id="input_id"type="number"   placeholder="Ingrese ID Empleado">
+        </div>
+
+        <div>
+            <label for="input_nombre">NOMBRE EMPLEDO</label>
+            <input th:field ="*{nombreEmpleado}" id="input_nombre"type="text"   placeholder="Ingrese Nombre Empleado">
+        </div>
+
+        <div>
+            <label for="input_correo">CORREO</label>
+            <input th:field ="*{correo}"id="input_correo"type="email"   placeholder="Ingrese Correo">
+        </div>
+
+        <div>
+            <label for="input_password">PASSWORD</label>
+            <input th:field ="*{password}"id="input_password"type="password"   placeholder="Ingrese Password">
+        </div>
+
+
+       table class="table">
+           <thead>
+           <tr>
+               <th scope="col">ROLES</th>
+           </tr>
+           </thead>
+
+           <tbody>
+           <tr th:each="rol : ${ROLES}">
+               <td><input th:field="*{roles}" type="checkbox" th:text="${rol.name}" th:value="${rol.name}"></td>
+           </tr>
+           </tbody>
+
+
+            <button type="submit">Registrar Empleado</button>
+    </form>
+
+
+</body>
+</html>

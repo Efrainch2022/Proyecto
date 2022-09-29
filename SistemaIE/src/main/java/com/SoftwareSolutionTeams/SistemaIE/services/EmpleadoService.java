@@ -16,9 +16,10 @@ public class EmpleadoService {
     @Autowired
     EmpleadoRepository empleadoRepository;
 
-    public void crearYActualizarEmpleado(Empleado empleado){
+    public String crearYActualizarEmpleado(Empleado empleado){
 
         empleadoRepository.save(empleado);
+        return "Empleado creado exitosamente";
     }
 
     public List<Empleado> verEmpleado(){
@@ -27,13 +28,16 @@ public class EmpleadoService {
         return empleados;
     }
 
-    public void eliminarEmpleado(Long id){
+    public String eliminarEmpleado(Long id){
         empleadoRepository.deleteById(id);
+        return "Empleado Eliminado exitosamente";
     }
+
 
     public void buscarEmpleado(Long id){
         empleadoRepository.findById(id);
     }
+
     public Empleado getEmpleado(long id) throws Exception {
         Optional<Empleado> empleadoBd = empleadoRepository.findById(id); //opcional si encontro o no encontro
         if(empleadoBd.isPresent()){
@@ -42,9 +46,15 @@ public class EmpleadoService {
         }
         throw new Exception("Empleado no existe");
     }
-    public Empleado findByCorreoEmpleado(String correoEmpleado){
-        return empleadoRepository.findByCorreoEmpleado(correoEmpleado);
+    public Empleado findByCorreoEmpleado(String correo){
+       return empleadoRepository.findByCorreo(correo);
     }
 
+   // @Transactional // bloque db cuando hay dos eventos
+
+    public Empleado updateUsuarioAll(Empleado empleado_update, Long id) throws Exception {
+        empleadoRepository.update(empleado_update.getNombreEmpleado(), empleado_update.getCorreo(), empleado_update.getPassword(), id);
+        return getEmpleado(id);
+    }
 
 }
